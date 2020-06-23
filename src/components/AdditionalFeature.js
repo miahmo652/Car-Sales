@@ -4,22 +4,19 @@ import {addFeature} from '../actions/index.js'
 import {useDispatch} from 'react-redux';
 
 const AdditionalFeature = props => {
-  const dispatch = useDispatch();
-  const add = feature => dispatch(addFeature(feature))
+  /*const dispatch = useDispatch();
+  const add = feature => dispatch(addFeature(feature)) */
 
 
   return (
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button" onClick={()=>add(props.feature)}>Add</button>
+      <button className="button" onClick={()=>props.addFeature(props.feature)}>Add</button>
       {props.feature.name} (+{props.feature.price})
       
     </li>
   );
 };
-const mapDispatchToProps = dispatch =>{
-  return {
-    addFeature: (feature)=>dispatch(addFeature())
-  }
-} 
-export default connect(null, mapDispatchToProps)(AdditionalFeature);
+
+
+export default connect(null, {addFeature})(AdditionalFeature);
